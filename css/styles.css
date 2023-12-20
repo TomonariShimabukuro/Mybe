@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6e6fa;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    color: #555;
+}
+
+.breadcrumb {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .breadcrumb li {
+    display: inline;/*横に並ぶように*/
+    list-style: none;
+    font-weight: bold;/*太字*/
+  }
+  
+  .breadcrumb li:after {/* >を表示*/
+    content: '>';
+    padding: 0 0.2em;
+    color: #555;
+  }
+  
+  .breadcrumb li:last-child:after {
+    content: '';
+  }
+  
+  .breadcrumb li a {
+    text-decoration: none;
+    color: #52b5ee;/*色*/
+  }
+  
+  .breadcrumb li a:hover {
+    text-decoration: underline;
+  }
+
+.header {
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.mypage {
+    background-color:　#c0c0c0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.search-bar {
+    margin-top: 10px;
+}
+
+.search-bar input {
+    padding: 8px;
+}
+
+.map-container {
+    margin-top: 10px;
+    position: relative;
+}
+
+#japanMap {
+    width: 100%;
+    max-width: 800px; /* 画像の最大幅 */
+    cursor: pointer;
+}
+
+.prefecture-select {
+    margin-top: 10px;
+}
+
+.prefecture-select select {
+    width: 100%;
+    padding: 8px;
+}
+
+.salon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.salon {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.mypage {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.mypage:hover {
+    background-color: #2980b9;
+}
+
+
+body {
+    background-color: #e6e6fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    color: #555;
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+
+.btn--orange,
+a.btn--orange {
+    color: #555;
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: rgb(3, 0, 0);
+  background: #e6e6fa;
+}
+
+.profile-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 400px;
+    cursor: pointer;
+}
+
+.profile-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
