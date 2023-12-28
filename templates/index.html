@@ -3,55 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Users/shimabukurotomonari/Desktop/beautysite/css/styles.css">
+    <link rel="stylesheet" href="/Users/shimabukurotomonari/Desktop/MyB/css/styles.css">
     <script src="../js/mypage.js" defer></script>
     <title>マイページ</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-<script type="text/javascript">
-        $(document).ready(function(){
-            $('.slider').bxSlider({
-                auto: true,
-                pause: 5000,
-            });
-        });
-</script>
 
 </head>
 <body>
     <div class="header">
         <h1>Mybe-log</h1>
-        <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope
-                itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/index.html">
-                  <span itemprop="name">ホーム</span>
-              </a>
-              <meta itemprop="position" content="1" />
-            </li>
-          
-            <li itemprop="itemListElement" itemscope
-                itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/mypage.html">
-                  <span itemprop="name">マイページ</span>
-              </a>
-              <meta itemprop="position" content="2" />
-            </li>
-          
-            <li itemprop="itemListElement" itemscope
-                itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/favorite.html">
-                  <span itemprop="name">お気に入り</span>
-              </a>
-              <meta itemprop="position" content="3" />
-            </li>
-          </ol>  
 
         <h2>Mybe-logとは</h2>
-        <p>日々のメイクや髪型などを気軽に記録でき、より良いものを追求するためにサービスです</p>
+        <p>日々のメイクや髪型などを気軽に記録でき、より良いものを追求する人のためのサービスです</p>
 
+        <section id="form">
+            <div id="toggle-forms">
+                <button class="waves-effect waves-light active" id="login">ログイン</button>
+                <button class="waves-effect waves-light" id="register">登録</button>
+            </div>
+            <form class="col s12">
+                <div class="row center-align">
+                    <h4 class="white-text">ログイン</h4>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">パスワード</label>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <button class="btn waves-effect waves-light">
+                        ログイン
+                    </button>
+                </div>
+                                        <p class="forgot">パスワードを忘れた方</p>
+                <ul class="animate">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </form>
+            <form class="col s12" >
+                <div class="row center-align">
+                    <h4 class="white-text">登録</h4>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">パスワード</label>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="input-field">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">（確認用）パスワード</label>
+                        </div>
+                    </div>
+                <div class="row center-align">
+                    <button class="btn waves-effect waves-light">
+                        登録
+                    </button>
+                </div>
+                <ul class="animate">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </form>
+        </section>
+        <script type="text/javascript" src="/Users/shimabukurotomonari/Desktop/MyB/js/test.js"></script>
 </body>
 </html>
 
