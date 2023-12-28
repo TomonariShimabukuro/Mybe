@@ -4,18 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Users/shimabukurotomonari/Desktop/beautysite/css/styles.css">
+    <link rel="stylesheet" href="/Users/shimabukurotomonari/Desktop/MyB/css/styles.css">
     <script src="../js/mypage.js" defer></script>
     <title>マイページ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').bxSlider({
+                auto: true,
+                pause: 5000,
+            });
+        });
+</script>
+
 </head>
 <body>
-
     <div class="header">
-        <h1>MyB</h1>
+        <h1>Mybe-log</h1>
         <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/beautysite/html/index.html">
+              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/index.html">
                   <span itemprop="name">ホーム</span>
               </a>
               <meta itemprop="position" content="1" />
@@ -23,7 +35,7 @@
           
             <li itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/beautysite/html/mypage.html">
+              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/mypage.html">
                   <span itemprop="name">マイページ</span>
               </a>
               <meta itemprop="position" content="2" />
@@ -31,7 +43,7 @@
           
             <li itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/beautysite/html/favorite.html">
+              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/favorite.html">
                   <span itemprop="name">お気に入り</span>
               </a>
               <meta itemprop="position" content="3" />
@@ -42,28 +54,30 @@
     <h1>お気に入り</h1>
 </div>
 
-<div class="profile-item">
-    <a  href="" class= "btn btn--orange">favorite</a>
-
+<div class="profile-container">
     <div class="profile-item">
-        <div class="slider">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.01.01.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.09.15.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.01.01.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.07.08.JPG" width= auto height= auto alt="">
-            </div>
+        <a  href="" class= "btn btn--orange">favorite</a>
+
+        <div class="profile-item">
+            <div class="slider">
+                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.01.01.JPG" width= auto height= auto alt="">
+                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.09.15.JPG" width= auto height= auto alt="">
+                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.01.01.JPG" width= auto height= auto alt="">
+                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.07.08.JPG" width= auto height= auto alt="">
+                </div>
+        </div>
     </div>
-</div>
 
-<div class="profile-item">
-    <a  href="" class= "btn btn--orange">like</a>
     <div class="profile-item">
-        <div class="slider">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.01.01.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.09.15.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.01.01.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.07.08.JPG" width= auto height= auto alt="">
-            </div>
+        <a  href="" class= "btn btn--orange">like</a>
+        <div class="profile-item">
+            <div class="slider">
+                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.01.01.JPG" width= auto height= auto alt="">
+                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.09.15.JPG" width= auto height= auto alt="">
+                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.01.01.JPG" width= auto height= auto alt="">
+                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.07.08.JPG" width= auto height= auto alt="">
+                </div>
+        </div>
     </div>
 </div>
 
