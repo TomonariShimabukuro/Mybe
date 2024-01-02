@@ -17,6 +17,16 @@
                 pause: 5000,
             });
         });
+
+</script>
+<!-- 削除する際に確認メッセージを表示 -->
+<script>
+    function confirmDelete(filename) {
+        var result = confirm('本当に削除しますか?');
+        if (result) {
+            window.location.href = '/delete/' + filename;
+        }
+    }
 </script>
 
 </head>
@@ -49,7 +59,7 @@
     <!-- 画像を表示と削除 -->
     {% for image in images %}
         <img src="{{ url_for('static', filename='images/' + image['filename']) }}" alt="Image">
-        <a href="{{ url_for('delete', filename=image['filename']) }}">削除</a>
+        <a href="javascript:void(0);" onclick="confirmDelete('{{ image['filename'] }}')">Delete</a>
     {% endfor %}
 
     <!-- 画像をアップロードするフォーム -->
