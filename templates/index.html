@@ -1,23 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <link rel="stylesheet" href="/Users/shimabukurotomonari/Desktop/MyB/css/styles.css">
+    <script src="../js/mypage.js" defer></script>
+    <title>マイページ</title>
+
 </head>
 <body>
-    <h1>Image Gallery</h1>
+    <div class="header">
+        <h1>Mybe-log</h1>
 
-    <!-- 画像を表示 -->
-    {% for image in images %}
-        <img src="{{ url_for('static', filename='images/' + image['filename']) }}" alt="Image">
-    {% endfor %}
+        <h2>Mybe-logとは</h2>
+        <p>日々のメイクや髪型などを気軽に記録でき、より良いものを追求する人のためのサービスです</p>
 
-    <!-- 画像をアップロードするフォーム -->
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <button type="submit">Upload</button>
-    </form>
+        <section id="form">
+            <div id="toggle-forms">
+                <button class="waves-effect waves-light active" id="login">ログイン</button>
+                <button class="waves-effect waves-light" id="register">登録</button>
+            </div>
+            <form class="col s12">
+                <div class="row center-align">
+                    <h4 class="white-text">ログイン</h4>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">パスワード</label>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <button class="btn waves-effect waves-light">
+                        ログイン
+                    </button>
+                </div>
+                                        <p class="forgot">パスワードを忘れた方</p>
+                <ul class="animate">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </form>
+            <form class="col s12" >
+                <div class="row center-align">
+                    <h4 class="white-text">登録</h4>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">パスワード</label>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="input-field">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">（確認用）パスワード</label>
+                        </div>
+                    </div>
+                <div class="row center-align">
+                    <button class="btn waves-effect waves-light">
+                        登録
+                    </button>
+                </div>
+                <ul class="animate">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </form>
+        </section>
+        <script type="text/javascript" src="/Users/shimabukurotomonari/Desktop/MyB/js/test.js"></script>
 </body>
 </html>
+
