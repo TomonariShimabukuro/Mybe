@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Users/shimabukurotomonari/Desktop/MyB/css/styles.css">
-    <script src="../js/mypage.js" defer></script>
     <title>アップロード</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -45,12 +44,21 @@
 
 <div class="header">
 
-    <h1>写真アップロード</h1>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="photo" accept="image/*" required>
-            <input type="submit" value="アップロード">
-        </form> 
+    <h1>アップロード</h1>
+        
+    <!-- 画像を表示と削除 -->
+    {% for image in images %}
+        <img src="{{ url_for('static', filename='images/' + image['filename']) }}" alt="Image">
+        <a href="{{ url_for('delete', filename=image['filename']) }}">削除</a>
+    {% endfor %}
+
+    <!-- 画像をアップロードするフォーム -->
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
+        <button type="submit">Upload</button>
+    </form>
 </div>
+
 
 </body>
 </html>

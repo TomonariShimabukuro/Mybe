@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 import os
 
@@ -24,7 +24,7 @@ def index():
     images = [{'filename': row[1]} for row in cur.fetchall()]
     
     cur.close()
-
+    
     return render_template('upload.html', images=images)
 
 # 画像をアップロードするためのルート
@@ -42,8 +42,28 @@ def upload():
             cur.execute("INSERT INTO images (filename) VALUES (%s)", (file.filename,))
             mysql.connection.commit()
             cur.close()
+        
+    return redirect(url_for('index'))
+
+# 画像を削除するためのルート
+@app.route('/delete/<filename>', methods=['GET'])
+def delete(filename):
+    # ファイルを削除
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+        # データベースからも削除
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM images WHERE filename = %s", (filename,))
+        mysql.connection.commit()
+        cur.close()
+        flash(f'File {filename} deleted successfully', 'success')
+    else:
+        flash(f'File {filename} not found', 'danger')
 
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
+    app.secret_key = 'your_secret_key'
     app.run(debug=True)
