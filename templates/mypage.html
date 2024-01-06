@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Users/shimabukurotomonari/Desktop/MyB/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="../js/mypage.js" defer></script>
     <title>マイページ</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -26,7 +26,7 @@
         <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/upload.html">
+              <a itemprop="item" href="/">
                   <span itemprop="name">アップロード</span>
               </a>
               <meta itemprop="position" content="1" />
@@ -34,7 +34,7 @@
           
             <li itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/mypage.html">
+              <a itemprop="item" href="/mypage">
                   <span itemprop="name">マイページ</span>
               </a>
               <meta itemprop="position" content="2" />
@@ -59,9 +59,9 @@
                 {% for photo in photos %}
                 <img src="{{ file.filename }}" alt="Uploaded file">
                 {% endfor %}" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.09.15.JPG" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.01.01.JPG" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.07.08.JPG" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
                 </div>
         </div>
     </div>
@@ -70,10 +70,10 @@
         <a  href="" class= "btn btn--orange">salon-log</a>
         <p id="treatmentHistory">最終施術日: 2023-01-01</p>
         <div class="slider">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.01.01.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.09.15.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.01.01.JPG" width= auto height= auto alt="">
-            <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.07.08.JPG" width= auto height= auto alt="">
+            <img src="" width= auto height= auto alt="">
+            <img src="" width= auto height= auto alt="">
+            <img src="" width= auto height= auto alt="">
+            <img src="" width= auto height= auto alt="">
             </div>
     </div>
 
@@ -82,10 +82,10 @@
 
         <div class="profile-item">
             <div class="slider">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.01.01.JPG" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.09.15.JPG" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.01.01.JPG" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.07.08.JPG" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
                 </div>
         </div>
     </div>
@@ -94,10 +94,10 @@
         <a  href="" class= "btn btn--orange">like</a>
         <div class="profile-item">
             <div class="slider">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.01.01.JPG" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2021.09.15.JPG" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.01.01.JPG" width= auto height= auto alt="">
-                <img src="/Users/shimabukurotomonari/Desktop/beautysite/2022.07.08.JPG" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
+                <img src="" width= auto height= auto alt="">
                 </div>
         </div>
     </div>

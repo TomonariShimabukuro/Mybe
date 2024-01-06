@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Users/shimabukurotomonari/Desktop/MyB/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>アップロード</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -37,7 +37,7 @@
           
             <li itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/upload.html">
+              <a itemprop="item" href="/upload">
                   <span itemprop="name">アップロード</span>
               </a>
               <meta itemprop="position" content="1" />
@@ -45,7 +45,7 @@
           
             <li itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/Users/shimabukurotomonari/Desktop/MyB/templates/mypage.html">
+              <a itemprop="item" href="/mypage">
                   <span itemprop="name">マイページ</span>
               </a>
               <meta itemprop="position" content="2" />

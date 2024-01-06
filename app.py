@@ -64,6 +64,12 @@ def delete(filename):
 
     return redirect(url_for('index'))
 
+# mypage.htmlへのルート
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
+
+
 if __name__ == '__main__':
     app.secret_key = 'your_secret_key'
     app.run(debug=True)

@@ -1,32 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
-    <script>
-        function confirmDelete(filename) {
-            var result = confirm('Are you sure you want to delete this image?');
-            if (result) {
-                window.location.href = '/delete/' + filename;
-            }
-        }
-    </script>
+    <title>User Authentication</title>
 </head>
+
 <body>
-    <h1>Image Gallery</h1>
 
-    <!-- アップロードフォーム -->
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <button type="submit">Upload</button>
-    </form>
+    <section id="form">
+        <div id="toggle-forms">
+            <button class="waves-effect waves-light active" id="login">ログイン</button>
+            <button class="waves-effect waves-light" id="register">登録</button>
+        </div>
 
-    <!-- 画像を表示 -->
-    {% for image in images %}
-        <img src="{{ url_for('static', filename='images/' + image['filename']) }}" alt="Image">
-        <a href="javascript:void(0);" onclick="confirmDelete('{{ image['filename'] }}')">Delete</a>
-    {% endfor %}
+        <form class="col s12" id="login-form" action="/login" method="post">
+            <div class="row center-align">
+                <h4 class="white-text">ログイン</h4>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input id="login-email" name="email" type="email" class="validate">
+                    <label for="login-email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input id="login-password" name="password" type="password" class="validate">
+                    <label for="login-password">パスワード</label>
+                </div>
+            </div>
+            <div class="row center-align">
+                <button class="btn waves-effect waves-light"name="action" value="login">ログイン</button>
+            </div>
+            <p class="forgot">パスワードを忘れた方</p>
+            <ul class="animate">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </form>
+
+        <form class="col s12" id="register-form" action="/register" method="post">
+            <div class="row center-align">
+                <h4 class="white-text">登録</h4>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input id="register-email" name="email" type="email" class="validate">
+                    <label for="register-email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input id="register-password" name="password" type="password" class="validate">
+                    <label for="register-password">パスワード</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input id="confirm-password" name="confirm-password" type="password" class="validate">
+                    <label for="confirm-password">（確認用）パスワード</label>
+                </div>
+            </div>
+            <div class="row center-align">
+                <button class="btn waves-effect waves-light"name="action"value="register">登録</button>
+            </div>
+        </form>
+    </section>
+
 </body>
+
 </html>
