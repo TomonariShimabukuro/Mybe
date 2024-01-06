@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'shimaT0915%'
-app.config['MYSQL_DB'] = 'image_gallery'
+app.config['MYSQL_DB'] = 'mybe'
 app.config['UPLOAD_FOLDER'] = 'static/images'
 
 mysql = MySQL(app)

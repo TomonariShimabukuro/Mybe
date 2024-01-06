@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-        <script src="../js/mypage.js" defer></script>
-        <title>マイページ</title>
-    
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>User Authentication</title>
+</head>
 <body>
     <section id="form">
         <div id="toggle-forms">
@@ -74,6 +72,8 @@
         </form>
     </section>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    
 </body>
 
 </html>

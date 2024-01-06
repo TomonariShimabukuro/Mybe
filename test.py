@@ -12,57 +12,43 @@ app.config['MYSQL_DB'] = 'mybe'
 mysql = MySQL(app)
 
 
-# Flaskアプリケーションのコード
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import render_template, request, redirect, url_for, flash, session, jsonify
 import bcrypt
 
-app = Flask(__name__)
-
-# セッションのセキュリティキー
-app.secret_key = 'your_secret_key'
-
-# ルート - ログインと登録
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        action = request.form.get('action')
-
-        if action == 'login':
-            # ログイン処理
+        if request.form['action'] == 'register':
             email = request.form['email']
             password = request.form['password']
-            
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+            # データベースにユーザー情報を挿入
+            cur = mysql.connection.cursor()
+            cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, hashed_password))
+            mysql.connection.commit()
+            cur.close()
+
+            flash('登録が成功しました！', 'success')
+            return redirect(url_for('register'))  # 登録が成功したらログインページにリダイレクト
+
+        elif request.form['action'] == 'login':
+            email = request.form['email']
+            password_candidate = request.form['password']
+
+            # データベースからユーザーを取得
             cur = mysql.connection.cursor()
             cur.execute("SELECT * FROM users WHERE email = %s", (email,))
             user = cur.fetchone()
             cur.close()
 
-            if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
+            if user and bcrypt.checkpw(password_candidate.encode('utf-8'), user['password'].encode('utf-8')):
                 session['logged_in'] = True
                 session['user_id'] = user['id']
                 flash('ログインが成功しました！', 'success')
-                return redirect(url_for('register'))
+                return redirect(url_for('dashboard'))
             else:
                 flash('無効なログイン資格情報', 'danger')
-
-        elif action == 'register':
-            # 登録処理
-            email = request.form['email']
-            password = request.form['password']
-            confirm_password = request.form['confirm_password']
-
-            if password == confirm_password:
-                hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-                # データベースにユーザー情報を挿入
-                cur = mysql.connection.cursor()
-                cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, hashed_password))
-                mysql.connection.commit()
-                cur.close()
-
-                flash('登録が成功しました！', 'success')
-            else:
-                flash('パスワードが一致しません', 'danger')
 
     return render_template('index.html')
 
