@@ -64,10 +64,12 @@ def delete(filename):
 
     return redirect(url_for('index'))
 
+
 # mypage.htmlへのルート
 @app.route('/mypage')
 def mypage():
     return render_template('mypage.html')
+
 
 
 if __name__ == '__main__':

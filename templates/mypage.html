@@ -56,13 +56,10 @@
         <p id="treatmentHistory">2023-01-01</p>
         <div class="profile-item">
             <div class="slider">
-                {% for photo in photos %}
-                <img src="{{ file.filename }}" alt="Uploaded file">
-                {% endfor %}" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                </div>
+                {% for image in images %}
+                <img src="{{ url_for('static', filename='images/' + image['filename']) }}" width= 100 height= auto alt="Image">
+                {% endfor %}
+            </div>
         </div>
     </div>
 

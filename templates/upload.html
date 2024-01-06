@@ -58,7 +58,7 @@
         
     <!-- 画像を表示と削除 -->
     {% for image in images %}
-        <img src="{{ url_for('static', filename='images/' + image['filename']) }}" alt="Image">
+        <img src="{{ url_for('static', filename='images/' + image['filename']) }}" width= 100 height= auto alt="Image">
         <a href="javascript:void(0);" onclick="confirmDelete('{{ image['filename'] }}')">Delete</a>
     {% endfor %}
 
