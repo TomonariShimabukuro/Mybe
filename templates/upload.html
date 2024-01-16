@@ -64,7 +64,13 @@
 
     <!-- 画像をアップロードするフォーム -->
     <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
+        <input type="file" name="file" accept="image/*" required>
+        <select name="tag">
+            <option value="mybe-log">mybe-log</option>
+            <option value="salon-log">salon-log</option>
+            <option value="favorite">favorite</option>
+            <option value="like">like</option>
+        </select>
         <button type="submit">Upload</button>
     </form>
 </div>

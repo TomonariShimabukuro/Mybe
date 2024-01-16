@@ -76,9 +76,27 @@
                 <div class="row center-align">
                     <button class="btn waves-effect waves-light"name="action"value="register">登録</button>
                 </div>
+                <ul class="animate">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </form>
         </section>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
 </body>
 </html>
 

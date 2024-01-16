@@ -56,24 +56,6 @@ h1{
     font-weight: bold;
 }
 
-.search-bar {
-    margin-top: 10px;
-}
-
-.search-bar input {
-    padding: 8px;
-}
-
-.map-container {
-    margin-top: 10px;
-    position: relative;
-}
-
-#japanMap {
-    width: 100%;
-    max-width: 800px; /* 画像の最大幅 */
-    cursor: pointer;
-}
 
 .prefecture-select {
     margin-top: 10px;
@@ -82,25 +64,6 @@ h1{
 .prefecture-select select {
     width: 100%;
     padding: 8px;
-}
-
-.salon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.salon {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    width: 80%;
-    max-width: 400px;
 }
 
 .mypage {
@@ -133,9 +96,8 @@ body {
 
 .profile-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between; /* 2つのアイテムを均等に配置 */
     margin: 20px;
 }
 
@@ -157,11 +119,12 @@ a.btn--orange:hover {
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    width: 80%;
-    max-width: 400px;
+    width: calc(50% - 20px); /* 50%の幅で、マージンを考慮 */
+    max-width: 400px; /* 適切な最大幅を指定 */
     cursor: pointer;
+    margin-bottom: 20px; /* 下部の余白を追加 */
 }
+
 
 .profile-item:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);

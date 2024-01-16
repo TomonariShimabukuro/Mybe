@@ -26,7 +26,7 @@
         <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem">
-              <a itemprop="item" href="/">
+              <a itemprop="item" href="/upload">
                   <span itemprop="name">アップロード</span>
               </a>
               <meta itemprop="position" content="1" />
@@ -46,60 +46,44 @@
 </div>
 
 <div class="profile-container">
-    <div class="profile-item">
-        <a  href="" class= "btn btn--orange">Name</a>
-        <p id="name">A</p>
-    </div>
 
     <div class="profile-item">
-        <a  href="" class= "btn btn--orange">mybe-log</a>
-        <p id="treatmentHistory">2023-01-01</p>
-        <div class="profile-item">
-            <div class="slider">
-                {% for image in images %}
-                <img src="{{ url_for('static', filename='images/' + image['filename']) }}" width= 100 height= auto alt="Image">
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
-    <div class="profile-item">
-        <a  href="" class= "btn btn--orange">salon-log</a>
-        <p id="treatmentHistory">最終施術日: 2023-01-01</p>
+        <a href="/tag/salon-log" class="btn btn--orange">salon-log</a>
+        <p id="treatmentHistory">最終施術日: 2024-01-01</p>
         <div class="slider">
-            <img src="" width= auto height= auto alt="">
-            <img src="" width= auto height= auto alt="">
-            <img src="" width= auto height= auto alt="">
-            <img src="" width= auto height= auto alt="">
-            </div>
-    </div>
-
-    <div class="profile-item">
-        <a  href="" class= "btn btn--orange">favorite</a>
-
-        <div class="profile-item">
-            <div class="slider">
-                <img src="" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                </div>
+            {% for image in salon_log_images %}
+                <img src="{{ url_for('static', filename='images/' + image.filename) }}" width="auto" height="auto" alt="">
+            {% endfor %}
         </div>
     </div>
-
+    
     <div class="profile-item">
-        <a  href="" class= "btn btn--orange">like</a>
-        <div class="profile-item">
-            <div class="slider">
-                <img src="" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                <img src="" width= auto height= auto alt="">
-                </div>
+        <a href="/tag/mybe-log" class="btn btn--orange">mybe-log</a>
+        <div class="slider">
+            {% for image in mybe_log_images %}
+                <img src="{{ url_for('static', filename='images/' + image.filename) }}" width="auto" height="auto" alt="">
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="profile-item">
+        <a href="/tag/favorite" class="btn btn--orange">favorite</a>
+        <div class="slider">
+            {% for image in favorite_images %}
+                <img src="{{ url_for('static', filename='images/' + image.filename) }}" width="auto" height="auto" alt="">
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="profile-item">
+        <a href="/tag/like" class="btn btn--orange">like</a>
+        <div class="slider">
+            {% for image in like_images %}
+                <img src="{{ url_for('static', filename='images/' + image.filename) }}" width="auto" height="auto" alt="">
+            {% endfor %}
         </div>
     </div>
 </div>
 
 </body>
 </html>
-
