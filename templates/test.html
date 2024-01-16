@@ -48,7 +48,7 @@
 <div class="profile-container">
 
     <div class="profile-item">
-        <a href="/tag/salon-log" class="btn btn--orange">salon-log</a>
+        <a href="{{ url_for('tag_page', tag='salon-log') }}" class="btn btn--orange">salon-log</a>
         <p id="treatmentHistory">最終施術日: 2024-01-01</p>
         <div class="slider">
             {% for image in salon_log_images %}
@@ -58,7 +58,7 @@
     </div>
     
     <div class="profile-item">
-        <a href="/tag/mybe-log" class="btn btn--orange">mybe-log</a>
+        <a href="{{ url_for('tag_page', tag='mybe-log') }}" class="btn btn--orange">mybe-log</a>
         <div class="slider">
             {% for image in mybe_log_images %}
                 <img src="{{ url_for('static', filename='images/' + image.filename) }}" width="auto" height="auto" alt="">
@@ -67,7 +67,7 @@
     </div>
     
     <div class="profile-item">
-        <a href="/tag/favorite" class="btn btn--orange">favorite</a>
+        <a href="{{ url_for('tag_page', tag='favorite') }}" class="btn btn--orange">favorite</a>
         <div class="slider">
             {% for image in favorite_images %}
                 <img src="{{ url_for('static', filename='images/' + image.filename) }}" width="auto" height="auto" alt="">
@@ -76,7 +76,7 @@
     </div>
     
     <div class="profile-item">
-        <a href="/tag/like" class="btn btn--orange">like</a>
+        <a href="{{ url_for('tag_page', tag='like') }}" class="btn btn--orange">like</a>
         <div class="slider">
             {% for image in like_images %}
                 <img src="{{ url_for('static', filename='images/' + image.filename) }}" width="auto" height="auto" alt="">
@@ -87,4 +87,3 @@
 
 </body>
 </html>
-

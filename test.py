@@ -143,6 +143,15 @@ def delete(filename):
 
     return redirect(url_for('upload'))
 
+@app.route('/tag/<tag>')
+def tag_page(tag):
+    # Imageモデルからtagに一致する画像を取得するクエリ
+    images_with_tag = images.query.filter_by(tag=tag).all()
+
+    # 取得した画像をHTMLテンプレートに渡して表示
+    return render_template('tag_page.html', images=images_with_tag, tag=tag)
+
+
 
 # /mypageにアクセスするためのルート
 @app.route('/mypage')
@@ -175,6 +184,7 @@ class images(db.Model):
     filename = db.Column(db.String(255))
     data = db.Column(db.LargeBinary)
     description = db.Column(db.String(255))
+    tag = db.Column(db.String(255))
 
 class users(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<!-- 削除する際に確認メッセージを表示 -->
+<script>
+    function confirmDelete(filename) {
+        var result = confirm('本当に削除しますか?');
+        if (result) {
+            window.location.href = '/delete/' + filename;
+        }
+    }
+</script>
+<body>
+    <h1>{{ tag }} 画像一覧</h1>
+    {% for image in images %}
+        <img src="{{ url_for('static', filename='images/' + image.filename) }}" width= 100 height= auto alt="Image">
+        <a href="javascript:void(0);" onclick="confirmDelete('{{ image['filename'] }}')">Delete</a>
+    {% endfor %}
+</body>
+</html>
