@@ -46,15 +46,6 @@ h1{
     text-align: center;
 }
 
-.mypage {
-    background-color:　#c0c0c0;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-}
 
 
 .prefecture-select {
@@ -67,13 +58,11 @@ h1{
 }
 
 .mypage {
-    background-color: #3498db;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .mypage:hover {
@@ -97,8 +86,8 @@ body {
 .profile-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* 2つのアイテムを均等に配置 */
-    margin: 20px;
+    justify-content: space-between; 
+    margin: 100px;
 }
 
 
@@ -115,14 +104,14 @@ a.btn--orange:hover {
 .profile-item {
     background-color: #fff;
     border: 1px solid #ddd;
-    padding: 20px;
+    padding: 100px;
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: calc(50% - 20px); /* 50%の幅で、マージンを考慮 */
-    max-width: 400px; /* 適切な最大幅を指定 */
+    width: calc(50% - 20px);
+    max-width: 400px;
     cursor: pointer;
-    margin-bottom: 20px; /* 下部の余白を追加 */
+    margin-bottom: 20px;
 }
 
 
