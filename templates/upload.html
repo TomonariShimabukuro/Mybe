@@ -38,7 +38,7 @@
 
     <h1>アップロード</h1>
         
-    <!-- 画像を表示と削除 -->
+    <!-- 画像を表示 -->
     {% for image in images %}
         <img src="{{ url_for('static', filename='images/' + image['filename']) }}" width= 100 height= auto alt="Image">
     {% endfor %}
