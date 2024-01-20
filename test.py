@@ -5,6 +5,8 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+import uuid
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -80,21 +82,24 @@ def login():
             flash('ログインが成功しました！', 'success')
             return render_template('mypage.html')
         else:
-            flash('無効なログイン資格情報', 'danger')
+            flash('メールアドレスもしくはパスワードが正しくありません', 'danger')
+            return render_template('index.html')
 
 
     return render_template('login.html')
 
 
-# 画像をアップロードするためのルート
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
         if 'file' in request.files:
             file = request.files['file']
             if file.filename != '':
+                # 固有のファイル名を生成
+                unique_filename = str(uuid.uuid4()) + '_' + secure_filename(file.filename)
+
                 # アップロードされた画像を保存
-                filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+                filename = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
                 file.save(filename)
 
                 # タグ情報を取得
@@ -107,9 +112,12 @@ def upload():
 
                 # データベースにファイル名とタグを保存
                 cur = mysql.connection.cursor()
-                cur.execute("INSERT INTO images (filename, tag) VALUES (%s, %s)", (file.filename, tag))
+                cur.execute("INSERT INTO images (filename, tag) VALUES (%s, %s)", (unique_filename, tag))
                 mysql.connection.commit()
                 cur.close()
+                flash('アップロードが成功しました', 'success')
+                return redirect(url_for('upload'))
+
 
     # 画像のリストを取得
     cur = mysql.connection.cursor()
