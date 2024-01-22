@@ -178,15 +178,25 @@ def delete(filename):
             flash(f'File {filename} not found', 'danger')
 
         return redirect(url_for('upload'))
+
     return redirect(url_for('login'))
     
 @app.route('/tag/<tag>')
 def tag_page(tag):
-    # Imageモデルからtagに一致する画像を取得するクエリ
-    images_with_tag = images.query.filter_by(tag=tag).all()
+    if 'logged_in' not in session:
+        flash('ログインしていません', 'danger')
+        return redirect(url_for('login'))
+    # ログインしている場合、ユーザーIDと画像ファイル名を取得
+    if 'user_id' in session:
+        user_id = session['user_id']
+
+    # Imageモデルからtagとuser_idに一致する画像を取得するクエリ
+    images_with_tag = images.query.filter_by(tag=tag, user_id=user_id).all()
 
     # 取得した画像をHTMLテンプレートに渡して表示
     return render_template('tag_page.html', images=images_with_tag, tag=tag)
+
+
 
 
 
@@ -227,6 +237,7 @@ class images(db.Model):
     data = db.Column(db.LargeBinary)
     description = db.Column(db.String(255))
     tag = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class users(db.Model):
     id = db.Column(db.Integer, primary_key=True)

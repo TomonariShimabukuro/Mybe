@@ -17,8 +17,9 @@
 <body>
     <h1>{{ tag }} 画像一覧</h1>
     {% for image in images %}
-        <img src="{{ url_for('static', filename='images/' + image.filename) }}" width= 100 height= auto alt="Image">
-        <a href="javascript:void(0);" onclick="confirmDelete('{{ image['filename'] }}')">Delete</a>
+        <img src="{{ url_for('static', filename='images/' + session['user_id']|string + '/' + image['filename']) }}" width=100 height=auto alt="Image">
+        <a href="javascript:void(0);" onclick="confirmDelete('{{ image.filename }}')">Delete</a>
     {% endfor %}
+
 </body>
 </html>
