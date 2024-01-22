@@ -161,7 +161,8 @@ def delete(filename):
     # ログインしている場合、ユーザーIDを取得
     if 'user_id' in session:
         user_id = session['user_id']
-
+        
+        
         # ファイルを削除
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], str(user_id), filename)
         if os.path.exists(file_path):
@@ -177,7 +178,6 @@ def delete(filename):
             flash(f'File {filename} not found', 'danger')
 
         return redirect(url_for('upload'))
-    flash('ユーザーIDが見つかりません', 'danger')
     return redirect(url_for('login'))
     
 @app.route('/tag/<tag>')
@@ -198,10 +198,11 @@ def mypage():
         flash('ログインしていません', 'danger')
         return redirect(url_for('login'))
     # 各タグごとの画像をデータベースから取得
-    salon_log_images = get_tag_images('salon-log')
-    mybe_log_images = get_tag_images('mybe-log')
-    favorite_images = get_tag_images('favorite')
-    like_images = get_tag_images('like')
+    salon_log_images = get_tag_images('salon-log', user_id=session['user_id'])
+    mybe_log_images = get_tag_images('mybe-log', user_id=session['user_id'])
+    favorite_images = get_tag_images('favorite', user_id=session['user_id'])
+    like_images = get_tag_images('like', user_id=session['user_id'])
+    
 
     return render_template('mypage.html',
                            salon_log_images=salon_log_images,
@@ -209,9 +210,9 @@ def mypage():
                            favorite_images=favorite_images,
                            like_images=like_images)
 
-def get_tag_images(tag):
+def get_tag_images(tag, user_id):
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM images WHERE tag = %s", (tag,))
+    cur.execute("SELECT * FROM images WHERE tag = %s AND user_id = %s", (tag, user_id))
     images = [{'filename': row[1]} for row in cur.fetchall()]
     cur.close()
     return images
