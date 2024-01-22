@@ -153,22 +153,33 @@ def upload():
 # 画像を削除するためのルート
 @app.route('/delete/<filename>', methods=['GET'])
 def delete(filename):
-    # ファイルを削除
-    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    if os.path.exists(file_path):
-        os.remove(file_path)
+    # ログインしているか確認
+    if 'logged_in' not in session:
+        flash('ログインしていません', 'danger')
+        return redirect(url_for('login'))
 
-        # データベースからも削除
-        cur = mysql.connection.cursor()
-        cur.execute("DELETE FROM images WHERE filename = %s", (filename,))
-        mysql.connection.commit()
-        cur.close()
-        flash(f'File {filename} deleted successfully', 'success')
-    else:
-        flash(f'File {filename} not found', 'danger')
+    # ログインしている場合、ユーザーIDを取得
+    if 'user_id' in session:
+        user_id = session['user_id']
 
-    return redirect(url_for('upload'))
+        # ファイルを削除
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], str(user_id), filename)
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
+            # データベースからも削除
+            cur = mysql.connection.cursor()
+            cur.execute("DELETE FROM images WHERE filename = %s AND user_id = %s", (filename, user_id))
+            mysql.connection.commit()
+            cur.close()
+            flash(f'File {filename} deleted successfully', 'success')
+        else:
+            flash(f'File {filename} not found', 'danger')
+
+        return redirect(url_for('upload'))
+    flash('ユーザーIDが見つかりません', 'danger')
+    return redirect(url_for('login'))
+    
 @app.route('/tag/<tag>')
 def tag_page(tag):
     # Imageモデルからtagに一致する画像を取得するクエリ
