@@ -51,7 +51,7 @@
         <a href="/tag/mybe-log" class="btn btn--orange">mybe-log</a>
         <div class="slider">
             {% for image in mybe_log_images %}
-                <img src="{{ url_for('static', filename='images/' + image.filename) }}" alt="">
+                <img src="{{ url_for('static', filename='images/'+ session['user_id']|string+ '/'  + image.filename) }}" alt="">
             {% endfor %}
         </div>
     </div>
@@ -61,7 +61,7 @@
         <p id="treatmentHistory">最終施術日: 2024-01-01</p>
         <div class="slider">
             {% for image in salon_log_images %}
-                <img src="{{ url_for('static', filename='images/' + image.filename) }}" alt="">
+                <img src="{{ url_for('static', filename='images/'+ session['user_id']|string+ '/'  + image.filename) }}" alt="">
             {% endfor %}
         </div>
     </div>
@@ -70,7 +70,7 @@
         <a href="/tag/favorite" class="btn btn--orange">favorite</a>
         <div class="slider">
             {% for image in favorite_images %}
-                <img src="{{ url_for('static', filename='images/' + image.filename) }}" alt="">
+                <img src="{{ url_for('static', filename='images/'+ session['user_id']|string+ '/'  + image.filename) }}" alt="">
             {% endfor %}
         </div>
     </div>
@@ -79,7 +79,7 @@
         <a href="/tag/like" class="btn btn--orange">like</a>
         <div class="slider">
             {% for image in like_images %}
-                <img src="{{ url_for('static', filename='images/' + image.filename) }}" alt="">
+                <img src="{{ url_for('static', filename='images/'+ session['user_id']|string+ '/'  + image.filename) }}" alt="">
             {% endfor %}
         </div>
     </div>

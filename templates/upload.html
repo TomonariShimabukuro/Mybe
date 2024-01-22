@@ -37,12 +37,15 @@
 <div class="header">
 
     <h1>アップロード</h1>
+
+    <p>ようこそ {{ session['user_id'] }} さん！</p>
         
     <!-- 画像を表示 -->
     {% for image in images %}
-        <img src="{{ url_for('static', filename='images/' + image['filename']) }}" width= 100 height= auto alt="Image">
+    <img src="{{ url_for('static', filename='images/'+ session['user_id']|string+ '/'  + image.filename) }}" width=100 height=auto alt="Image">
     {% endfor %}
 
+    
     <!-- 画像をアップロードするフォーム -->
     <form action="/upload" method="post" enctype="multipart/form-data">
         <input type="file" name="file" accept="image/*" required>

@@ -79,8 +79,10 @@ def login():
         if user and bcrypt.checkpw(password_candidate.encode('utf-8'), user[1].encode('utf-8')):
             session['logged_in'] = True
             session['user_id'] = user[0]
-            flash('ログインが成功しました！', 'success')
-            return render_template('mypage.html')
+            with mysql.connection.cursor() as cur:
+                cur.execute("SELECT id FROM images WHERE user_id = %s", (user[0],))
+                images = cur.fetchall()
+            return render_template('mypage.html', images=images)
         else:
             flash('メールアドレスもしくはパスワードが正しくありません', 'danger')
             return render_template('index.html')
@@ -91,6 +93,16 @@ def login():
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
+    if 'logged_in' not in session:
+        flash('ログインしていません', 'danger')
+        return redirect(url_for('login'))
+    # ログインしている場合、ユーザーIDと画像ファイル名を取得
+    if 'user_id' in session:
+        user_id = session['user_id']
+
+
+    
+
     if request.method == 'POST':
         if 'file' in request.files:
             file = request.files['file']
@@ -99,7 +111,13 @@ def upload():
                 unique_filename = str(uuid.uuid4()) + '_' + secure_filename(file.filename)
 
                 # アップロードされた画像を保存
-                filename = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
+                user_id = session['user_id']  # ログインしているユーザーのIDを取得
+                user_folder = os.path.join(app.config['UPLOAD_FOLDER'], str(user_id))
+
+                if not os.path.exists(user_folder):
+                    os.makedirs(user_folder)
+
+                filename = os.path.join(user_folder, unique_filename)
                 file.save(filename)
 
                 # タグ情報を取得
@@ -110,22 +128,22 @@ def upload():
                     flash('無効なタグ', 'danger')
                     return redirect(url_for('upload'))
 
-                # データベースにファイル名とタグを保存
+                # データベースにファイル名とタグ、ユーザーIDを保存
                 cur = mysql.connection.cursor()
-                cur.execute("INSERT INTO images (filename, tag) VALUES (%s, %s)", (unique_filename, tag))
+                cur.execute("INSERT INTO images (filename, tag, user_id) VALUES (%s, %s, %s)",
+                            (unique_filename, tag, user_id))
                 mysql.connection.commit()
                 cur.close()
-                flash('アップロードが成功しました', 'success')
                 return redirect(url_for('upload'))
 
-
-    # 画像のリストを取得
+    # ユーザーごとの画像のリストを取得
+    user_id = session['user_id']
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM images")
-    
+    cur.execute("SELECT * FROM images WHERE user_id = %s", (user_id,))
+
     # タプルのリストからディクショナリのリストに変換
     images = [{'filename': row[1], 'tag': row[2]} for row in cur.fetchall()]
-    
+
     cur.close()
 
     return render_template('upload.html', images=images)
@@ -164,6 +182,10 @@ def tag_page(tag):
 # /mypageにアクセスするためのルート
 @app.route('/mypage')
 def mypage():
+    # ログインするとmypageにアクセス可能に
+    if 'logged_in' not in session:
+        flash('ログインしていません', 'danger')
+        return redirect(url_for('login'))
     # 各タグごとの画像をデータベースから取得
     salon_log_images = get_tag_images('salon-log')
     mybe_log_images = get_tag_images('mybe-log')
