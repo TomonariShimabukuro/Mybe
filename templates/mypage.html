@@ -39,11 +39,14 @@
               </a>
               <meta itemprop="position" content="2" />
             </li>
-          </ol>  
+        </ol>
+        <h2>{{ session['user_id'] }}さんのマイページ</h2>
+        <form action="{{ url_for('logout') }}" method="get">
+            <button type="submit">ログアウト</button>
+        </form>
+    </div>
 
-<div class="header">
-    <h1>マイページ</h1>
-</div>
+
 
 <div class="profile-container">
 

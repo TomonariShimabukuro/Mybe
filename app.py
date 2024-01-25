@@ -90,6 +90,11 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.clear()  # セッションをクリアしてログアウト
+    return redirect(url_for('register'))
+
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
